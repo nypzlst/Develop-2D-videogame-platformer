@@ -51,18 +51,19 @@ public class Movement : MonoBehaviour
     private int jumpCount = 0;
     public int maxJump = 2;
     public float jumpForce = 5f;
+   
 
 
     private void Jump()
     {
-
-        if (Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump) )|| (isWallSliding && Input.GetButtonDown("Jump")))
+        if (Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump) || isWallJump))
         {
-            //rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            isWallJump = false;
         }
         if (ground) { jumpCount = 0; }
     }
+
 
     private bool ground;
     public Transform GroundCheck;
@@ -110,9 +111,11 @@ public class Movement : MonoBehaviour
     public float wallJumpTime = 0.2f;
     public float slideSpeed = 0.3f;
     public float wallDistance = 0.5f;
+    public float wallJumpForce = 7f;
     bool isWallSliding = false;
     RaycastHit2D WallCheckingHit;
     float jumpTime;
+    private bool isWallJump;
 
     private void WallJump()
     {
@@ -137,12 +140,18 @@ public class Movement : MonoBehaviour
         }
 
         if (isWallSliding)
-        {
+        { 
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, slideSpeed, float.MaxValue));
         }
         
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isWallJump = true;
+        }
+    }
 
 }
