@@ -28,16 +28,18 @@ public class Movement : MonoBehaviour
         Jump();
         OnGround();
         onDash();
+        WallJump();
     }
 
 
     private void Move()
     {
-        moveX  = Input.GetAxis("Horizontal");
+        moveX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
         anim.SetFloat("Run", Mathf.Abs(moveX));
     }
     public bool faceRight = true;
+
     void Reflect()
     {
         if ((moveX > 0 && !faceRight) || (moveX < 0 && faceRight))
@@ -46,24 +48,20 @@ public class Movement : MonoBehaviour
             faceRight = !faceRight;
         }
     }
-
-
-
-
-
-    private int jumpCount =0;
+    private int jumpCount = 0;
     public int maxJump = 2;
     public float jumpForce = 5f;
+
 
     private void Jump()
     {
 
-        if(Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump)))
+        if (Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump) )|| (isWallSliding && Input.GetButtonDown("Jump")))
         {
             //rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-        if (ground) { jumpCount=0; }
+        if (ground) { jumpCount = 0; }
     }
 
     private bool ground;
@@ -76,6 +74,7 @@ public class Movement : MonoBehaviour
         ground = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, Ground);
     }
 
+    [Header("Dash")]
     public int dashForce = 5000;
 
     private void onDash()
@@ -84,9 +83,9 @@ public class Movement : MonoBehaviour
         {
             dashBlock = true;
             Invoke("dashLock", 0.1f);
-            rb.velocity = new Vector2(0,0);
-            tr.emitting= true;
-            if(!faceRight)
+            rb.velocity = new Vector2(0, 0);
+            tr.emitting = true;
+            if (!faceRight)
             {
                 rb.AddForce(Vector2.left * dashForce);
 
@@ -94,7 +93,7 @@ public class Movement : MonoBehaviour
             else
             {
                 rb.AddForce(Vector2.right * dashForce);
-                
+
             }
         }
     }
@@ -106,4 +105,44 @@ public class Movement : MonoBehaviour
         dashBlock = false;
         tr.emitting = false;
     }
+
+    [Header("Wall Jump")]
+    public float wallJumpTime = 0.2f;
+    public float slideSpeed = 0.3f;
+    public float wallDistance = 0.5f;
+    bool isWallSliding = false;
+    RaycastHit2D WallCheckingHit;
+    float jumpTime;
+
+    private void WallJump()
+    {
+        if (faceRight)
+        {
+            WallCheckingHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0), wallDistance, Ground);
+        }
+        else
+        {
+            WallCheckingHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0), wallDistance, Ground);
+        }
+
+
+        if (WallCheckingHit && !ground && moveX !=0)
+        {
+            isWallSliding = true;
+           // jumpTime = Time.time + wallJumpTime;
+        }
+        else if (jumpTime< Time.time)
+        {
+            isWallSliding = false;
+        }
+
+        if (isWallSliding)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, slideSpeed, float.MaxValue));
+        }
+        
+    }
+
+    
+
 }
