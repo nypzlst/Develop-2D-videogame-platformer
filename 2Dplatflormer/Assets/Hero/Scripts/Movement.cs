@@ -7,11 +7,39 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     TrailRenderer tr;
-    public float moveX;
+
+    [Header("Move")]
+    
     public float moveSpeed = 1f;
     public Vector2 moveVector;
+    public bool faceRight = true;// перевірка направлення персонажа
+    private float moveX;
 
-    // Start is called before the first frame update
+    [Header("Jump")]
+    public int maxJump = 2;
+    public float jumpForce = 5f;
+    private int jumpCount = 0;
+
+    [Header("CheckGround")]
+    public Transform GroundCheck;
+    public float checkRadius = 0.5f;
+    public LayerMask Ground;
+    private bool ground;
+
+    [Header("Dash")]
+    public int dashForce = 5000;
+    private bool dashBlock = false;
+
+    [Header("Wall Jump")]
+    public float wallJumpTime = 0.2f;
+    public float slideSpeed = 0.3f;
+    public float wallDistance = 0.5f;
+    public float wallJumpForce = 7f;
+    bool isWallSliding = false;
+    RaycastHit2D WallCheckingHit;
+    float jumpTime;
+    private bool isWallJump;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,7 +48,7 @@ public class Movement : MonoBehaviour
         checkRadius = GroundCheck.GetComponent<CircleCollider2D>().radius;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         Move();
@@ -38,8 +66,7 @@ public class Movement : MonoBehaviour
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
         anim.SetFloat("Run", Mathf.Abs(moveX));
     }
-    public bool faceRight = true;
-
+    
     void Reflect()
     {
         if ((moveX > 0 && !faceRight) || (moveX < 0 && faceRight))
@@ -48,12 +75,7 @@ public class Movement : MonoBehaviour
             faceRight = !faceRight;
         }
     }
-    private int jumpCount = 0;
-    public int maxJump = 2;
-    public float jumpForce = 5f;
-   
-
-
+    
     private void Jump()
     {
         if (Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump) || isWallJump))
@@ -64,19 +86,10 @@ public class Movement : MonoBehaviour
         if (ground) { jumpCount = 0; }
     }
 
-
-    private bool ground;
-    public Transform GroundCheck;
-    public float checkRadius = 0.5f;
-    public LayerMask Ground;
-
     void OnGround()
     {
         ground = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, Ground);
     }
-
-    [Header("Dash")]
-    public int dashForce = 5000;
 
     private void onDash()
     {
@@ -99,23 +112,11 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private bool dashBlock = false;
-
     void dashLock()
     {
         dashBlock = false;
         tr.emitting = false;
     }
-
-    [Header("Wall Jump")]
-    public float wallJumpTime = 0.2f;
-    public float slideSpeed = 0.3f;
-    public float wallDistance = 0.5f;
-    public float wallJumpForce = 7f;
-    bool isWallSliding = false;
-    RaycastHit2D WallCheckingHit;
-    float jumpTime;
-    private bool isWallJump;
 
     private void WallJump()
     {
