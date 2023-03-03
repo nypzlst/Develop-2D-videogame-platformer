@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -65,6 +66,12 @@ public class Movement : MonoBehaviour
         moveX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
         anim.SetFloat("Run", Mathf.Abs(moveX));
+
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Physics2D.IgnoreLayerCollision(7, 8, true);
+            Invoke("IgnoreLayerOff", 0.5f);
+        }
     }
     
     void Reflect()
@@ -75,15 +82,27 @@ public class Movement : MonoBehaviour
             faceRight = !faceRight;
         }
     }
-    
+
+
+    public float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump) || isWallJump))
+        if (Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump) || isWallJump || coyoteTimeCounter>0f))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isWallJump = false;
         }
-        if (ground) { jumpCount = 0; }
+        if (ground) 
+        { 
+            jumpCount = 0;
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
     }
 
     void OnGround()
@@ -155,4 +174,8 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void IgnoreLayerOff()
+    {
+        Physics2D.IgnoreLayerCollision(7, 8, false);
+    }
 }
