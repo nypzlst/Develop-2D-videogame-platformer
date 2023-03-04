@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     TrailRenderer tr;
 
     [Header("Move")]
-    
+
     public float moveSpeed = 1f;
     public Vector2 moveVector;
     public bool faceRight = true;// перевірка направлення персонажа
@@ -41,6 +41,17 @@ public class Movement : MonoBehaviour
     float jumpTime;
     private bool isWallJump;
 
+    [Header("Arround Jump")]
+    public float xAxis;
+    public float yAxis;
+    public float dashSpeed;
+    private Vector2 dashDir;
+
+    [Header("Coyote time")]
+    public float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -60,7 +71,6 @@ public class Movement : MonoBehaviour
         WallJump();
     }
 
-
     private void Move()
     {
         moveX = Input.GetAxis("Horizontal");
@@ -73,7 +83,7 @@ public class Movement : MonoBehaviour
             Invoke("IgnoreLayerOff", 0.5f);
         }
     }
-    
+
     void Reflect()
     {
         if ((moveX > 0 && !faceRight) || (moveX < 0 && faceRight))
@@ -83,19 +93,15 @@ public class Movement : MonoBehaviour
         }
     }
 
-
-    public float coyoteTime = 0.2f;
-    private float coyoteTimeCounter;
-
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump) || isWallJump || coyoteTimeCounter>0f))
+        if (Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump) || isWallJump || coyoteTimeCounter > 0f))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isWallJump = false;
         }
-        if (ground) 
-        { 
+        if (ground)
+        {
             jumpCount = 0;
             coyoteTimeCounter = coyoteTime;
         }
@@ -111,24 +117,35 @@ public class Movement : MonoBehaviour
     }
 
     private void onDash()
-    {
+    { 
         if (Input.GetKeyDown(KeyCode.LeftShift) && !dashBlock)
-        {
+        { 
             dashBlock = true;
-            Invoke("dashLock", 0.1f);
+            Invoke("dashLock", 2f);
             rb.velocity = new Vector2(0, 0);
             tr.emitting = true;
-            if (!faceRight)
+
+            xAxis = Input.GetAxisRaw("Horizontal");
+            yAxis = Input.GetAxisRaw("Vertical");
+            dashDir = new Vector2(xAxis, yAxis).normalized;
+            if (!faceRight && dashDir == new Vector2(-1,0))
             {
                 rb.AddForce(Vector2.left * dashForce);
-
             }
-            else
+            else if (!faceRight)
+            {
+                rb.velocity = dashDir * dashSpeed;
+            }
+            else if (faceRight && dashDir == new Vector2(1, 0))
             {
                 rb.AddForce(Vector2.right * dashForce);
-
             }
+            else if (faceRight)
+            {
+                rb.velocity = dashDir * dashSpeed;
+            }         
         }
+       
     }
 
     void dashLock()
