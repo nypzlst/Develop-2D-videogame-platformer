@@ -19,7 +19,8 @@ public class Movement : MonoBehaviour
     [Header("Jump")]
     public int maxJump = 2;
     public float jumpForce = 5f;
-    private int jumpCount = 0;
+    public int jumpCount =0;
+    public float secondJumpMult = 0.75f;
 
     [Header("CheckGround")]
     public Transform GroundCheck;
@@ -95,11 +96,19 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && (ground || (++jumpCount < maxJump) || isWallJump || coyoteTimeCounter > 0f))
+        if (Input.GetButtonDown("Jump") && (coyoteTimeCounter>0 || isWallJump))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isWallJump = false;
+
+
         }
+        else if(Input.GetButtonDown("Jump") && ++jumpCount < maxJump )
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce * secondJumpMult);
+            jumpCount++;
+        }
+
         if (ground)
         {
             jumpCount = 0;
@@ -143,9 +152,9 @@ public class Movement : MonoBehaviour
             else if (faceRight)
             {
                 rb.velocity = dashDir * dashSpeed;
-            }         
+            }
+            
         }
-       
     }
 
     void dashLock()
@@ -153,6 +162,7 @@ public class Movement : MonoBehaviour
         dashBlock = false;
         tr.emitting = false;
     }
+
 
     private void WallJump()
     {
@@ -185,7 +195,7 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             isWallJump = true;
         }
