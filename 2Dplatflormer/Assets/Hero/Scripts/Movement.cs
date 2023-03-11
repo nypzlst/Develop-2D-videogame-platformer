@@ -93,26 +93,29 @@ public class Movement : MonoBehaviour
             faceRight = !faceRight;
         }
     }
-
+    bool condition = true;
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && (coyoteTimeCounter>0 || isWallJump))
+        if (Input.GetButtonDown("Jump") &&  (coyoteTimeCounter>0 || isWallJump))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isWallJump = false;
 
 
         }
-        else if(Input.GetButtonDown("Jump") && ++jumpCount < maxJump )
+        else if(Input.GetButtonDown("Jump") && ++jumpCount < maxJump && condition)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce * secondJumpMult);
             jumpCount++;
+            condition = false;
         }
 
         if (ground)
         {
             jumpCount = 0;
             coyoteTimeCounter = coyoteTime;
+
+            condition = true;
         }
         else
         {
@@ -134,26 +137,13 @@ public class Movement : MonoBehaviour
             rb.velocity = new Vector2(0, 0);
             tr.emitting = true;
 
-            xAxis = Input.GetAxisRaw("Horizontal");
-            yAxis = Input.GetAxisRaw("Vertical");
-            dashDir = new Vector2(xAxis, yAxis).normalized;
-            if (!faceRight && dashDir == new Vector2(-1,0))
+            if (!faceRight)
             {
                 rb.AddForce(Vector2.left * dashForce);
-            }
-            else if (!faceRight)
-            {
-                rb.velocity = dashDir * dashSpeed;
-            }
-            else if (faceRight && dashDir == new Vector2(1, 0))
+            }else if (faceRight)
             {
                 rb.AddForce(Vector2.right * dashForce);
             }
-            else if (faceRight)
-            {
-                rb.velocity = dashDir * dashSpeed;
-            }
-            
         }
     }
 
@@ -162,7 +152,6 @@ public class Movement : MonoBehaviour
         dashBlock = false;
         tr.emitting = false;
     }
-
 
     private void WallJump()
     {
@@ -198,6 +187,7 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             isWallJump = true;
+            jumpCount++;
         }
     }
 

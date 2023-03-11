@@ -936,7 +936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161576579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.73, y: 6.19, z: 0}
+  m_LocalPosition: {x: 7.69, y: 0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -968,7 +968,7 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 320
-  dashForce: 5000
+  dashForce: 12000
   wallJumpTime: 0.2
   slideSpeed: -3.56
   wallDistance: 0.5
@@ -976,7 +976,7 @@ MonoBehaviour:
   xAxis: 0
   yAxis: 0
   dashSpeed: 11
-  coyoteTime: 0.2
+  coyoteTime: 0.1
 --- !u!95 &1161576585
 Animator:
   serializedVersion: 5
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 1515979741}
   - component: {fileID: 1515979740}
   - component: {fileID: 1515979739}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (3)
   m_TagString: Wall
   m_Icon: {fileID: 0}
