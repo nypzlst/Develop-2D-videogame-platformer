@@ -96,7 +96,7 @@ public class Movement : MonoBehaviour
     bool condition = true;
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump") &&  (coyoteTimeCounter>0 || isWallJump))
+        if (Input.GetButtonDown("Jump") &&  (ground || isWallJump))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isWallJump = false;
