@@ -96,11 +96,12 @@ public class Movement : MonoBehaviour
     bool condition = true;
     private void Jump()
     {
+        anim.SetBool("IsJump", true);
         if (Input.GetButtonDown("Jump") &&  (ground || isWallJump))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isWallJump = false;
-
+           
 
         }
         else if(Input.GetButtonDown("Jump") && ++jumpCount < maxJump && condition)
@@ -114,7 +115,7 @@ public class Movement : MonoBehaviour
         {
             jumpCount = 0;
             coyoteTimeCounter = coyoteTime;
-
+            anim.SetBool("IsJump", false);
             condition = true;
         }
         else
@@ -129,9 +130,11 @@ public class Movement : MonoBehaviour
     }
 
     private void onDash()
-    { 
+    {
+       
         if (Input.GetKeyDown(KeyCode.LeftShift) && !dashBlock)
-        { 
+        {
+            anim.SetBool("IsDash", true);
             dashBlock = true;
             Invoke("dashLock", 2f);
             rb.velocity = new Vector2(0, 0);
@@ -140,17 +143,22 @@ public class Movement : MonoBehaviour
             if (!faceRight)
             {
                 rb.AddForce(Vector2.left * dashForce);
-            }else if (faceRight)
+                anim.SetBool("IsDash", false);
+            }
+            else if (faceRight)
             {
                 rb.AddForce(Vector2.right * dashForce);
+                anim.SetBool("IsDash", false);
             }
         }
+
     }
 
     void dashLock()
     {
         dashBlock = false;
         tr.emitting = false;
+   
     }
 
     private void WallJump()
