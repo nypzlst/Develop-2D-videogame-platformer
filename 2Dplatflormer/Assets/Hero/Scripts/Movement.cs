@@ -25,28 +25,30 @@ public class Movement : MonoBehaviour
     [Header("CheckGround")]
     public Transform GroundCheck;
     public float checkRadius = 0.5f;
-    public LayerMask Ground;
+    public LayerMask Ground;    
     private bool ground;
 
     [Header("Dash")]
     public int dashForce = 5000;
     private bool dashBlock = false;
+    //Насторйки для вол джампа
+    //[Header("Wall Jump")]
+    //public float wallJumpTime = 0.2f;
+    //public float slideSpeed = 0.3f;
+    //public float wallDistance = 0.5f;
+    //public float wallJumpForce = 7f;
+    //bool isWallSliding = false;
+    //RaycastHit2D WallCheckingHit;
+    //float jumpTime;
+    //private bool isWallJump;
+    //Старый деш
+    //[Header("Arround Jump")]
+    //public float xAxis;
+    //public float yAxis;
+    //public float dashSpeed;
+    //private Vector2 dashDir;
 
-    [Header("Wall Jump")]
-    public float wallJumpTime = 0.2f;
-    public float slideSpeed = 0.3f;
-    public float wallDistance = 0.5f;
-    public float wallJumpForce = 7f;
-    bool isWallSliding = false;
-    RaycastHit2D WallCheckingHit;
-    float jumpTime;
-    private bool isWallJump;
-
-    [Header("Arround Jump")]
-    public float xAxis;
-    public float yAxis;
-    public float dashSpeed;
-    private Vector2 dashDir;
+   
 
     [Header("Coyote time")]
     public float coyoteTime = 0.2f;
@@ -69,7 +71,7 @@ public class Movement : MonoBehaviour
         Jump();
         OnGround();
         onDash();
-        WallJump();
+        //WallJump();
     }
 
     private void Move()
@@ -78,6 +80,7 @@ public class Movement : MonoBehaviour
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
         anim.SetFloat("Run", Mathf.Abs(moveX));
 
+        
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             Physics2D.IgnoreLayerCollision(7, 8, true);
@@ -93,30 +96,29 @@ public class Movement : MonoBehaviour
             faceRight = !faceRight;
         }
     }
-    bool condition = true;
     private void Jump()
     {
         anim.SetBool("IsJump", true);
-        if (Input.GetButtonDown("Jump") &&  (ground || isWallJump))
+        if (Input.GetButtonDown("Jump") &&  coyoteTimeCounter>0)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            isWallJump = false;
+           // isWallJump = false;
            
 
         }
-        else if(Input.GetButtonDown("Jump") && ++jumpCount < maxJump && condition)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce * secondJumpMult);
-            jumpCount++;
-            condition = false;
-        }
+        //Второй прыжок, на текущий момент не нужен, возможно в дальнейшем пригодиться 
+        //else if(Input.GetButtonDown("Jump") && ++jumpCount < maxJump && condition)
+        //{
+        //    rb.velocity = new Vector2(rb.velocity.x, jumpForce * secondJumpMult);
+        //    jumpCount++;
+        //    condition = false;
+        //}
 
         if (ground)
         {
             jumpCount = 0;
             coyoteTimeCounter = coyoteTime;
             anim.SetBool("IsJump", false);
-            condition = true;
         }
         else
         {
@@ -134,12 +136,20 @@ public class Movement : MonoBehaviour
        
         if (Input.GetKeyDown(KeyCode.LeftShift) && !dashBlock)
         {
-            anim.SetBool("IsDash", true);
+            
             dashBlock = true;
             Invoke("dashLock", 2f);
+            
             rb.velocity = new Vector2(0, 0);
             tr.emitting = true;
-
+            if (!ground){
+                anim.StopPlayback();
+                anim.Play("AirDash");
+            }
+            else{
+                anim.StopPlayback();
+                anim.Play("Dash");
+            }
             if (!faceRight)
             {
                 rb.AddForce(Vector2.left * dashForce);
@@ -160,44 +170,44 @@ public class Movement : MonoBehaviour
         tr.emitting = false;
    
     }
+    // Убрана возможность прижка от стены так как не используется в дизайне уровней
+    //private void WallJump()
+    //{
+    //    if (faceRight)
+    //    {
+    //        WallCheckingHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0), wallDistance, Ground);
+    //    }
+    //    else
+    //    {
+    //        WallCheckingHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0), wallDistance, Ground);
+    //    }
 
-    private void WallJump()
-    {
-        if (faceRight)
-        {
-            WallCheckingHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0), wallDistance, Ground);
-        }
-        else
-        {
-            WallCheckingHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0), wallDistance, Ground);
-        }
 
+    //    if (WallCheckingHit && !ground && moveX !=0)
+    //    {
+    //        isWallSliding = true;
+    //       // jumpTime = Time.time + wallJumpTime;
+    //    }
+    //    else if (jumpTime< Time.time)
+    //    {
+    //        isWallSliding = false;
+    //    }
 
-        if (WallCheckingHit && !ground && moveX !=0)
-        {
-            isWallSliding = true;
-           // jumpTime = Time.time + wallJumpTime;
-        }
-        else if (jumpTime< Time.time)
-        {
-            isWallSliding = false;
-        }
-
-        if (isWallSliding)
-        { 
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, slideSpeed, float.MaxValue));
-        }
+    //    if (isWallSliding)
+    //    { 
+    //        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, slideSpeed, float.MaxValue));
+    //    }
         
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            isWallJump = true;
-            jumpCount++;
-        }
-    }
+    //}
+    // проверка для вол джампа
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Wall"))
+    //    {
+    //        isWallJump = true;
+    //        jumpCount++;
+    //    }
+    //}
 
     void IgnoreLayerOff()
     {

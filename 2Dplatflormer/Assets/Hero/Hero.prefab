@@ -124,18 +124,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0030713081, y: -0.1619193}
+  m_Offset: {x: 0.007501602, y: -0.40705872}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31414604, y: 0.63623357}
+  m_Size: {x: 0.6243038, y: 1.1265125}
   m_EdgeRadius: 0
 --- !u!114 &2289530509665477906
 MonoBehaviour:
@@ -149,11 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e4d23860fce524284b3654c935338e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 9
   moveVector: {x: 0, y: 0}
   faceRight: 1
   maxJump: 2
-  jumpForce: 7.3
+  jumpForce: 11.5
   jumpCount: 1
   secondJumpMult: 0.75
   GroundCheck: {fileID: 2289530510497395458}
@@ -169,7 +169,7 @@ MonoBehaviour:
   xAxis: 0
   yAxis: 0
   dashSpeed: 11
-  coyoteTime: 0.1
+  coyoteTime: 0.2
 --- !u!95 &2289530509665477907
 Animator:
   serializedVersion: 5
@@ -333,7 +333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2289530510497395469}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.005, y: -0.226, z: 0}
+  m_LocalPosition: {x: 0.005, y: -0.746, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -355,4 +355,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.26
+  m_Radius: 0.29
