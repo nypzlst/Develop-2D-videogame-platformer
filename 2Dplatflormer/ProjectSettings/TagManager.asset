@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Ladder
   - Wall
+  - Hero
+  - DeathColl
+  - DeathCollSecond
   layers:
   - Default
   - TransparentFX

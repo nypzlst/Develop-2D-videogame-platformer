@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 2289530509665477906}
   - component: {fileID: 2289530509665477907}
   - component: {fileID: 2289530509665477904}
+  - component: {fileID: -5359119692337800136}
   m_Layer: 7
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,13 +163,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   dashForce: 12000
-  wallJumpTime: 0.2
-  slideSpeed: -3.56
-  wallDistance: 0.5
-  wallJumpForce: 3
-  xAxis: 0
-  yAxis: 0
-  dashSpeed: 11
   coyoteTime: 0.2
 --- !u!95 &2289530509665477907
 Animator:
@@ -308,6 +302,18 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
+--- !u!114 &-5359119692337800136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2289530509665477913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36eeba1e2fd6a9b48b90506c0a0359c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2289530510497395469
 GameObject:
   m_ObjectHideFlags: 0

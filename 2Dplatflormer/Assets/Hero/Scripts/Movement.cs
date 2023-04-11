@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -61,6 +62,7 @@ public class Movement : MonoBehaviour
         anim = GetComponent<Animator>();
         tr = GetComponent<TrailRenderer>();
         checkRadius = GroundCheck.GetComponent<CircleCollider2D>().radius;
+       
     }
 
 
@@ -72,6 +74,7 @@ public class Movement : MonoBehaviour
         OnGround();
         onDash();
         //WallJump();
+      
     }
 
     private void Move()
