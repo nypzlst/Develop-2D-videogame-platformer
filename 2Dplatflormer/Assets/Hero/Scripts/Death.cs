@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
+    private Rigidbody2D rb;
     private Animator anim;
     void Start()
     {
+        
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         if (HeroDeath)
         {
@@ -37,10 +40,15 @@ public class Death : MonoBehaviour
     void OnDeath(float timeAnimation,string animationName)
     {
         Invoke("RestartLvl", timeAnimation);
+
+        rb.bodyType = RigidbodyType2D.Static;
+       
+
         HeroDeath = true;
         anim.StopPlayback();
         anim.Play(animationName);
+       
     }
-
-    private bool HeroDeath = false;
+    
+    public bool HeroDeath = false;
 }

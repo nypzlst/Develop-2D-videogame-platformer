@@ -32,24 +32,9 @@ public class Movement : MonoBehaviour
     [Header("Dash")]
     public int dashForce = 5000;
     private bool dashBlock = false;
-    //Насторйки для вол джампа
-    //[Header("Wall Jump")]
-    //public float wallJumpTime = 0.2f;
-    //public float slideSpeed = 0.3f;
-    //public float wallDistance = 0.5f;
-    //public float wallJumpForce = 7f;
-    //bool isWallSliding = false;
-    //RaycastHit2D WallCheckingHit;
-    //float jumpTime;
-    //private bool isWallJump;
-    //Старый деш
-    //[Header("Arround Jump")]
-    //public float xAxis;
-    //public float yAxis;
-    //public float dashSpeed;
-    //private Vector2 dashDir;
+  
 
-   
+  
 
     [Header("Coyote time")]
     public float coyoteTime = 0.2f;
@@ -89,6 +74,7 @@ public class Movement : MonoBehaviour
             Physics2D.IgnoreLayerCollision(7, 8, true);
             Invoke("IgnoreLayerOff", 0.5f);
         }
+       
     }
 
     void Reflect()
@@ -98,6 +84,12 @@ public class Movement : MonoBehaviour
             transform.localScale *= new Vector2(-1, 1);
             faceRight = !faceRight;
         }
+        //if ((moveX > 0 && !faceRight) || (moveX < 0 && faceRight))
+        //{
+        //    transform.rotation = Quaternion.Euler(0f, (faceRight ? 180f : 0f), 0f);
+        //    faceRight = !faceRight;
+        //}
+
     }
     private void Jump()
     {

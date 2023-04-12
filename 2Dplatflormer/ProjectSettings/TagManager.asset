@@ -10,6 +10,8 @@ TagManager:
   - Hero
   - DeathColl
   - DeathCollSecond
+  - FallPlatf
+  - DestrPlat
   layers:
   - Default
   - TransparentFX
