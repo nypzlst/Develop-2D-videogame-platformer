@@ -84,11 +84,6 @@ public class Movement : MonoBehaviour
             transform.localScale *= new Vector2(-1, 1);
             faceRight = !faceRight;
         }
-        //if ((moveX > 0 && !faceRight) || (moveX < 0 && faceRight))
-        //{
-        //    transform.rotation = Quaternion.Euler(0f, (faceRight ? 180f : 0f), 0f);
-        //    faceRight = !faceRight;
-        //}
 
     }
     private void Jump()
@@ -165,44 +160,6 @@ public class Movement : MonoBehaviour
         tr.emitting = false;
    
     }
-    // Убрана возможность прижка от стены так как не используется в дизайне уровней
-    //private void WallJump()
-    //{
-    //    if (faceRight)
-    //    {
-    //        WallCheckingHit = Physics2D.Raycast(transform.position, new Vector2(wallDistance, 0), wallDistance, Ground);
-    //    }
-    //    else
-    //    {
-    //        WallCheckingHit = Physics2D.Raycast(transform.position, new Vector2(-wallDistance, 0), wallDistance, Ground);
-    //    }
-
-
-    //    if (WallCheckingHit && !ground && moveX !=0)
-    //    {
-    //        isWallSliding = true;
-    //       // jumpTime = Time.time + wallJumpTime;
-    //    }
-    //    else if (jumpTime< Time.time)
-    //    {
-    //        isWallSliding = false;
-    //    }
-
-    //    if (isWallSliding)
-    //    { 
-    //        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, slideSpeed, float.MaxValue));
-    //    }
-        
-    //}
-    // проверка для вол джампа
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Wall"))
-    //    {
-    //        isWallJump = true;
-    //        jumpCount++;
-    //    }
-    //}
 
     void IgnoreLayerOff()
     {
