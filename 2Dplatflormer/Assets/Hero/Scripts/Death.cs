@@ -8,6 +8,13 @@ public class Death : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
+
+    private void Awake()
+    {
+        GameManager.SetStartPosition();
+        transform.position = GameManager.GetLaskCheckpoint();
+    }
+
     void Start()
     {
         
@@ -16,14 +23,14 @@ public class Death : MonoBehaviour
         if (HeroDeath)
         {
             RestartLvl();
-            HeroDeath= false;
+            HeroDeath = false;
         }
         
     }
     void RestartLvl()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        HeroDeath= false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  
+        HeroDeath = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,15 +47,11 @@ public class Death : MonoBehaviour
     void OnDeath(float timeAnimation,string animationName)
     {
         Invoke("RestartLvl", timeAnimation);
-
         rb.bodyType = RigidbodyType2D.Static;
-       
-
         HeroDeath = true;
         anim.StopPlayback();
         anim.Play(animationName);
        
     }
-    
     public bool HeroDeath = false;
 }

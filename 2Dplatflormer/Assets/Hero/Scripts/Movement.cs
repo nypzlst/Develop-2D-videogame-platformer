@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour
     TrailRenderer tr;
 
     [Header("Move")]
-
     public float moveSpeed = 1f;
     public Vector2 moveVector;
     public bool faceRight = true;// перевірка направлення персонажа
@@ -27,19 +26,12 @@ public class Movement : MonoBehaviour
     public Transform GroundCheck;
     public float checkRadius = 0.5f;
     public LayerMask Ground;    
-    private bool ground;
+    public bool ground;
 
-    [Header("Dash")]
-    public int dashForce = 5000;
-    private bool dashBlock = false;
-  
-
-  
-
+   
     [Header("Coyote time")]
     public float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
-
 
     void Start()
     {
@@ -50,15 +42,12 @@ public class Movement : MonoBehaviour
        
     }
 
-
     void Update()
     {
         Move();
         Reflect();
         Jump();
         OnGround();
-        onDash();
-        //WallJump();
       
     }
 
@@ -92,21 +81,10 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") &&  coyoteTimeCounter>0)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-           // isWallJump = false;
-           
-
         }
-        //Второй прыжок, на текущий момент не нужен, возможно в дальнейшем пригодиться 
-        //else if(Input.GetButtonDown("Jump") && ++jumpCount < maxJump && condition)
-        //{
-        //    rb.velocity = new Vector2(rb.velocity.x, jumpForce * secondJumpMult);
-        //    jumpCount++;
-        //    condition = false;
-        //}
 
         if (ground)
         {
-            jumpCount = 0;
             coyoteTimeCounter = coyoteTime;
             anim.SetBool("IsJump", false);
         }
@@ -119,46 +97,6 @@ public class Movement : MonoBehaviour
     void OnGround()
     {
         ground = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, Ground);
-    }
-
-    private void onDash()
-    {
-       
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !dashBlock)
-        {
-            
-            dashBlock = true;
-            Invoke("dashLock", 2f);
-            
-            rb.velocity = new Vector2(0, 0);
-            tr.emitting = true;
-            if (!ground){
-                anim.StopPlayback();
-                anim.Play("AirDash");
-            }
-            else{
-                anim.StopPlayback();
-                anim.Play("Dash");
-            }
-            if (!faceRight)
-            {
-                rb.AddForce(Vector2.left * dashForce);
-                anim.SetBool("IsDash", false);
-            }
-            else if (faceRight)
-            {
-                rb.AddForce(Vector2.right * dashForce);
-                anim.SetBool("IsDash", false);
-            }
-        }
-
-    }
-
-    void dashLock()
-    {
-        dashBlock = false;
-        tr.emitting = false;
-   
     }
 
     void IgnoreLayerOff()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class GameEvents : MonoBehaviour
 {
@@ -34,12 +35,9 @@ public class GameEvents : MonoBehaviour
     private void FallingPlatformForNextLvl()
     {
         FreezePositon();
-        //virtualCamera.m_Lens.FieldOfView = 35f;
-
-
-
+        //virtualCamera.m_Lens.FieldOfView = 35f
         Invoke("UnFreezePosition", timeToInvoke);
-
+        Invoke("LoadNextLevel", 5f);
 
         Debug.Log("Falling platform its work");
     }
@@ -56,4 +54,10 @@ public class GameEvents : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         Debug.Log("Unfreeze OK");
     }
+
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadSceneAsync(3);
+    }
+
 }
