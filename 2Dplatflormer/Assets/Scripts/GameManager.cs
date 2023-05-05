@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     static Vector2 lastCheckpoint;
+    static int mapCount;
 
     public static void SetLastCheckpoint(Vector2 checkpointPosition)
     {
@@ -36,4 +37,35 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+
+    public static int GetMapIndex()
+    {
+        Debug.Log($"GetMapIndex :{mapCount}");
+        return mapCount;
+    }
+
+
+    public static void SetMapIndex(int count)
+    {
+        mapCount=count;
+        PlayerPrefs.SetInt("MapCount", count);
+        PlayerPrefs.Save();
+    }
+
+
+    public static void SetStartMap()
+    {
+        if (PlayerPrefs.HasKey("MapCount"))
+        {
+            int startMapCount = PlayerPrefs.GetInt("MapCount");
+            mapCount = startMapCount;
+        }
+        else
+        {
+            mapCount = 0;
+        }
+    }
+
+
 }

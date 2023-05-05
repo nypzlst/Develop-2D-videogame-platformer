@@ -10,14 +10,17 @@ public class Death : MonoBehaviour
     private Animator anim;
 
     private void Awake()
-    {
+    { 
+        //GameManager.SetStartMap();
+        //SceneManager.LoadScene(GameManager.GetMapIndex());
         GameManager.SetStartPosition();
         transform.position = GameManager.GetLaskCheckpoint();
+       
     }
 
     void Start()
     {
-        
+       
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         if (HeroDeath)
@@ -29,7 +32,8 @@ public class Death : MonoBehaviour
     }
     void RestartLvl()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  
+        GameManager.SetStartMap();
+        SceneManager.LoadScene(GameManager.GetMapIndex());  
         HeroDeath = false;
     }
 
