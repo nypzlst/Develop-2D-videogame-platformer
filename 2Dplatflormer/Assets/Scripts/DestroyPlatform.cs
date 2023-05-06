@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyPlatform : MonoBehaviour
+public class DestroyPlatform1 : MonoBehaviour
 {
-    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        rb= GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
@@ -21,11 +20,12 @@ public class DestroyPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Hero"))
         {
-            Invoke("isDestroy", 2f);
+            Invoke("OnDestroy", 1f);
         }
     }
-    private void isDestroy()
+
+    private void OnDestroy()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

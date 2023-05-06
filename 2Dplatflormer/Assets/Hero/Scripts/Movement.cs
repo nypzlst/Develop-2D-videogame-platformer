@@ -33,6 +33,10 @@ public class Movement : MonoBehaviour
     public float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
+    [Header("Trampline")]
+    public float launchForce = 5f;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -103,4 +107,13 @@ public class Movement : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(7, 8, false);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Trampoline"))
+        {
+            rb.velocity = Vector2.up * launchForce;
+        }
+    }
+
 }

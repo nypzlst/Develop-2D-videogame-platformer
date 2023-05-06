@@ -12,6 +12,8 @@ TagManager:
   - DeathCollSecond
   - FallPlatf
   - DestrPlat
+  - Trampoline
+  - Trampoline45
   layers:
   - Default
   - TransparentFX
