@@ -8,14 +8,12 @@ public class Death : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator anim;
+    //[SerializeField] GameObject startPosition;
 
     private void Awake()
-    { 
-        //GameManager.SetStartMap();
-        //SceneManager.LoadScene(GameManager.GetMapIndex());
+    {
         GameManager.SetStartPosition();
         transform.position = GameManager.GetLaskCheckpoint();
-       
     }
 
     void Start()

@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class Checkpoint : MonoBehaviour
 {
     Vector2 heroPosition;
-
-
+    static Vector2 startPos;
+    [SerializeField] GameObject startPosition;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Hero"))

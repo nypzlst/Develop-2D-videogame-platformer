@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     static Vector2 lastCheckpoint;
-    static int mapCount;
-
+    public static int mapCount;
+    
     public static void SetLastCheckpoint(Vector2 checkpointPosition)
     {
         lastCheckpoint= checkpointPosition;
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            lastCheckpoint = new Vector2(87, 5);
+            lastCheckpoint = new Vector2(0, 0) ;
         }
 
     }

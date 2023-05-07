@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &344295294
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.818935
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435008, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7714050224340435009, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+      propertyPath: m_Name
+      value: CheckPoint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
 --- !u!4 &473753700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2289530509665477917, guid: 5b5e6b216b6a78f4d96fda99c20ab5f3, type: 3}
@@ -197,8 +254,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &969549261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7714050224340435009, guid: 31c16bef893c87b49a0eaf2010ec9c29, type: 3}
+  m_PrefabInstance: {fileID: 344295294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1014071174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -352,6 +414,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5359119692337800136, guid: 5b5e6b216b6a78f4d96fda99c20ab5f3, type: 3}
+      propertyPath: startPosition
+      value: 
+      objectReference: {fileID: 969549261}
     - target: {fileID: 2289530509665477904, guid: 5b5e6b216b6a78f4d96fda99c20ab5f3, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -374,7 +440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2289530509665477917, guid: 5b5e6b216b6a78f4d96fda99c20ab5f3, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2289530509665477917, guid: 5b5e6b216b6a78f4d96fda99c20ab5f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -505,7 +571,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -1063,7 +1129,7 @@ Transform:
   - {fileID: 1474078281}
   - {fileID: 1682634373}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682634372
 GameObject:
@@ -1159,7 +1225,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -2499,7 +2565,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.5
+  orthographic size: 7.61
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2523,7 +2589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708418385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.64, y: 7.0500007, z: -10}
+  m_LocalPosition: {x: -0.5002988, y: 4.699184, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2639,7 +2705,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -4025,6 +4091,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 954575225686766160, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
+      propertyPath: m_ScreenX
+      value: 0.4863571
+      objectReference: {fileID: 0}
+    - target: {fileID: 954575225686766160, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
+      propertyPath: m_ScreenY
+      value: 0.4440988
+      objectReference: {fileID: 0}
+    - target: {fileID: 954575225686766160, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
+      propertyPath: m_DeadZoneWidth
+      value: 0.1268758
+      objectReference: {fileID: 0}
+    - target: {fileID: 954575225686766160, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
+      propertyPath: m_LookaheadTime
+      value: 0.046
+      objectReference: {fileID: 0}
+    - target: {fileID: 954575225686766160, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
+      propertyPath: m_DeadZoneHeight
+      value: 0.325167
+      objectReference: {fileID: 0}
+    - target: {fileID: 954575225686766160, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
+      propertyPath: m_LookaheadSmoothing
+      value: 10.9
+      objectReference: {fileID: 0}
     - target: {fileID: 954575226709595546, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
       propertyPath: m_Name
       value: Cam
@@ -4033,17 +4123,21 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 473753700}
+    - target: {fileID: 954575226709595547, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 7.61
+      objectReference: {fileID: 0}
     - target: {fileID: 954575226709595548, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 954575226709595548, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.64
+      value: -0.5002988
       objectReference: {fileID: 0}
     - target: {fileID: 954575226709595548, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.0500007
+      value: 4.699184
       objectReference: {fileID: 0}
     - target: {fileID: 954575226709595548, guid: 2b1a1765f3504824b9cfb8dbdc49c2a1, type: 3}
       propertyPath: m_LocalPosition.z
