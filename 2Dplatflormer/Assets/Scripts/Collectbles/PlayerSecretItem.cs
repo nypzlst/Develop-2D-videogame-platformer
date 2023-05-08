@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerSecretItem : MonoBehaviour
 {
-    public int NumberOfSecretItem = 0;
-
+     int NumberOfSecretItem = 0;
+    int Count;
+    
 
     public void SecretItemCollected()
     {
         NumberOfSecretItem++;
-        GameManager.AddSecretItem(NumberOfSecretItem);
+        Count = NumberOfSecretItem;
+        GameManager.AddSecretItem(Count);
         Debug.Log($"secret : {GameManager.ReturnNum()}");
     }
 }

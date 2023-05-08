@@ -35,6 +35,8 @@ public class Death : MonoBehaviour
         HeroDeath = false;
     }
 
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("DeathColl"))

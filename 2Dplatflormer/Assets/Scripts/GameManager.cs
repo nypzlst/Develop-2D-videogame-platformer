@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     }
 
 
+
     public static int GetMapIndex()
     {
         Debug.Log($"GetMapIndex :{mapCount}");
@@ -80,7 +81,8 @@ public class GameManager : MonoBehaviour
 
     public static int ReturnNum()
     {
-        int coin = PlayerPrefs.GetInt("SecretCount");
-        return coin;
+        
+        return secretCount;
     }
+
 }
