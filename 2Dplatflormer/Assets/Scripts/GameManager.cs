@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
 {
     static Vector2 lastCheckpoint;
     public static int mapCount;
-    
+    public static int secretCount;
+
+
     public static void SetLastCheckpoint(Vector2 checkpointPosition)
     {
         lastCheckpoint= checkpointPosition;
@@ -68,5 +70,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+     public static void AddSecretItem(int count)
+    {
+        secretCount = count;
+        PlayerPrefs.SetInt("SecretCount", secretCount);
+        PlayerPrefs.Save();
+        Debug.Log($"Secret item count = {secretCount}");
+    }
 
+    public static int ReturnNum()
+    {
+        int coin = PlayerPrefs.GetInt("SecretCount");
+        return coin;
+    }
 }
