@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     static Vector2 lastCheckpoint;
-    public static int mapCount;
+    static int mapCount;
     public static int secretCount;
 
 
@@ -43,18 +43,21 @@ public class GameManager : MonoBehaviour
 
 
 
-    public static int GetMapIndex()
-    {
-        Debug.Log($"GetMapIndex :{mapCount}");
-        return mapCount;
-    }
-
+  
 
     public static void SetMapIndex(int count)
     {
         mapCount=count;
         PlayerPrefs.SetInt("MapCount", count);
         PlayerPrefs.Save();
+        Debug.Log($"Set last index map :{mapCount}");
+    }
+
+
+    public static int GetMapIndex()
+    {
+        Debug.Log($"GetMapIndex :{mapCount}");
+        return mapCount;
     }
 
 
