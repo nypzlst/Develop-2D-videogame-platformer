@@ -18,5 +18,13 @@ public class StartMenu : MonoBehaviour
     }
 
 
+    public void Continue()
+    {
+        GameManager.SetStartMap();
+        SceneManager.LoadScene(GameManager.GetMapIndex());
+        GameManager.SetStartPosition();
+        transform.position = GameManager.GetLaskCheckpoint();
+    }
+
 
 }
