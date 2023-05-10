@@ -17,12 +17,27 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level0_1.unity
     guid: 43efcfeeec3f0bf488adea9ef9177b65
+  - enabled: 1
+    path: Assets/Scenes/Level0_2.unity
+    guid: 9d8b10b0be4609a4b8a9b8f8c592e1c0
+  - enabled: 1
+    path: Assets/Scenes/Level0_3.unity
+    guid: 3fb0178c8fdc3a744b298e9f6e9c4f8f
+  - enabled: 1
+    path: Assets/Scenes/Level0_4.unity
+    guid: ec4f413a35c81d74f96adca2fde23ede
+  - enabled: 1
+    path: Assets/Scenes/Level0_5.unity
+    guid: 20acb67e880dbd4408c4daaae502a400
   - enabled: 0
     path: Assets/Scenes/Level 1.unity
     guid: 374d6edec81bd8e4ab83167c0c0c9338
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/EndGameStillBeta.unity
+    guid: 4d0bae6df6c873f41ac942fd2c8f7293
   - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: a32dd99f11b0e394ab8b7e11204a648a
