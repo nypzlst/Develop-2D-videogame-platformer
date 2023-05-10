@@ -8,8 +8,7 @@ public class StartMenu : MonoBehaviour
     // Start is called before the first frame update
     public void Play()
     {
-        PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("StartNewGame");
     }
     public void Quit()
     {
@@ -20,10 +19,7 @@ public class StartMenu : MonoBehaviour
 
     public void Continue()
     {
-        GameManager.SetStartMap();
-        SceneManager.LoadScene(GameManager.GetMapIndex());
-        GameManager.SetStartPosition();
-        transform.position = GameManager.GetLaskCheckpoint();
+        SceneManager.LoadScene("Loading");
     }
 
 
