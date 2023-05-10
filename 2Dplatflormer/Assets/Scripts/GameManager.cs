@@ -88,4 +88,17 @@ public class GameManager : MonoBehaviour
         return secretCount;
     }
 
+
+    public static void SetSecretItem()
+    {
+        if (PlayerPrefs.HasKey("SecretCount"))
+        {
+            int setItem = PlayerPrefs.GetInt("SecretCount");
+            secretCount = setItem;
+        }
+        else
+        {
+            secretCount = 0;
+        }
+    }
 }

@@ -10,6 +10,7 @@ public class PlayerSecretItem : MonoBehaviour
 
     public void SecretItemCollected()
     {
+        GameManager.SetSecretItem();
         NumberOfSecretItem++;
         Count = NumberOfSecretItem;
         GameManager.AddSecretItem(Count);
