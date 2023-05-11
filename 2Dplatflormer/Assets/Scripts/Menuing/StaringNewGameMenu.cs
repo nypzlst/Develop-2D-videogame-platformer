@@ -14,7 +14,7 @@ public class StaringNewGameMenu : AbstractLoading
         Debug.Log(timer);
         if (timer <= 0)
         {
-            //PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteAll();
             SceneManager.LoadScene(1);
         }
 
