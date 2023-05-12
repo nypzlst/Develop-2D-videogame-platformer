@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class Teleport : MonoBehaviour
 {
 
+    public float nextStateTimer = 3f;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Hero"))
         {
-            Invoke("NextState", 5f);
+            Invoke("NextState", nextStateTimer);
             // Добавить анимацию в хождение в портал чтобы скрыть косяки
             Debug.Log("Code 1");
         }
