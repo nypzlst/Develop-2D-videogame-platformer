@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
 {
+    public Button button;
+
     // Start is called before the first frame update
     public void Play()
     {
@@ -19,7 +22,15 @@ public class StartMenu : MonoBehaviour
 
     public void Continue()
     {
-        SceneManager.LoadScene("Loading");
+        
+        if (GameManager.GetMapIndex() >= 8 || GameManager.GetMapIndex() == 0)
+        {
+            button.interactable = false;
+        }
+        else
+        {
+            SceneManager.LoadScene("Loading");
+        }
     }
 
 

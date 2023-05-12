@@ -16,7 +16,7 @@ public class LoadingMenu : AbstractLoading
             SceneManager.LoadScene(GameManager.GetMapIndex());
             GameManager.SetStartPosition();
             transform.position = GameManager.GetLaskCheckpoint();
-            Time.timeScale = 1f;    
+            Time.timeScale = 1f;   
         }
     }
 }

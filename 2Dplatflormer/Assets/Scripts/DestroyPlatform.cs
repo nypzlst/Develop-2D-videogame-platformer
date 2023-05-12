@@ -5,22 +5,13 @@ using UnityEngine;
 public class DestroyPlatform : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float timeToDestroy = 1f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Hero"))
         {
-            Invoke("OnDestroy", 1f);
+            Invoke("OnDestroy", timeToDestroy);
         }
     }
 
