@@ -22,14 +22,15 @@ public class StartMenu : MonoBehaviour
 
     public void Continue()
     {
-        
+        GameManager.SetStartMap();
         if (GameManager.GetMapIndex() >= 8 || GameManager.GetMapIndex() == 0)
         {
             button.interactable = false;
+            
         }
         else
         {
-            SceneManager.LoadScene("Loading");
+                SceneManager.LoadScene("Loading");
         }
     }
 
