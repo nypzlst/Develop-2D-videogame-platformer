@@ -82,19 +82,15 @@ public class Movement : MonoBehaviour
     private void Jump()
     {
         anim.SetBool("IsJump", true);
-        if (Input.GetButtonDown("Jump") &&  coyoteTimeCounter>0)
+        if (Input.GetButtonDown("Jump") && ground  )
         {
+   
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
         if (ground)
-        {
-            coyoteTimeCounter = coyoteTime;
+        {    
             anim.SetBool("IsJump", false);
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.deltaTime;
         }
     }
 
