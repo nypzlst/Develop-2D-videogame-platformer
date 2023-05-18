@@ -14,7 +14,9 @@ TagManager:
   - DestrPlat
   - Trampoline
   - Air
-  - Airbone
+  - AirboneOn
+  - AirboneOff
+  - DashOn
   layers:
   - Default
   - TransparentFX

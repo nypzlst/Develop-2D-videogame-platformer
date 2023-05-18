@@ -67,5 +67,11 @@ public class DashMove : MonoBehaviour
         tr.emitting = false;
 
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("DashOn"))
+        {
+            this.GetComponent<DashMove>().enabled = true;
+        }
+    }
 }
