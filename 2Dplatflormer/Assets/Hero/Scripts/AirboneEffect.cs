@@ -16,12 +16,33 @@ public class AirboneEffect : MonoBehaviour
 
     void Update()
     {
-        if (!move.ground)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, -airSpeed);
-        }
-
+        //if (!move.ground)
+        //{
+        //    rb.velocity = new Vector2(rb.velocity.x, -airSpeed);
+        //}
+        SlowFallEffect();
     }
+
+    void SlowFallEffect()
+    {
+        if (Input.GetKey(KeyCode.F))
+        {
+            if (!move.ground)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, -airSpeed);
+            }
+        }
+        else if(Input.GetKeyUp(KeyCode.F)) { }
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+        }
+    }
+
+
+
+
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
