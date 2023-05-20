@@ -201,11 +201,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7679667927510850931, guid: 9c2032ffa26e1b143977ccd5ec9e2171, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.115387
+      value: -45.552563
       objectReference: {fileID: 0}
     - target: {fileID: 7679667927510850931, guid: 9c2032ffa26e1b143977ccd5ec9e2171, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.2728395
+      value: 4.8128395
       objectReference: {fileID: 0}
     - target: {fileID: 7679667927510850931, guid: 9c2032ffa26e1b143977ccd5ec9e2171, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1454,11 +1454,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6343163712069279283, guid: 44c28be4b29599b4989e4c8392f1b8e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -46.61
+      value: -47.92
       objectReference: {fileID: 0}
     - target: {fileID: 6343163712069279283, guid: 44c28be4b29599b4989e4c8392f1b8e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.04
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 6343163712069279283, guid: 44c28be4b29599b4989e4c8392f1b8e5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1596,11 +1596,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7860963719452742259, guid: ff18029979a563b4c9df320ed9c2dc7d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.115387
+      value: -45.552563
       objectReference: {fileID: 0}
     - target: {fileID: 7860963719452742259, guid: ff18029979a563b4c9df320ed9c2dc7d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.2728395
+      value: 4.8128395
       objectReference: {fileID: 0}
     - target: {fileID: 7860963719452742259, guid: ff18029979a563b4c9df320ed9c2dc7d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -38431,6 +38431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071761267}
   - component: {fileID: 2071761266}
+  - component: {fileID: 2071761268}
   m_Layer: 0
   m_Name: wooden-house
   m_TagString: Untagged
@@ -38505,3 +38506,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &2071761268
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071761265}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: bdd4c1d093aa0c2478eeff9c580f3ef7, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []

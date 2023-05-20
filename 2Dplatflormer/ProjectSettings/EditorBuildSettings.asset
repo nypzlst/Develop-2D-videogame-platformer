@@ -24,8 +24,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Level0_3.unity
     guid: 3fb0178c8fdc3a744b298e9f6e9c4f8f
   - enabled: 1
-    path: Assets/Scenes/Level0_4.unity
-    guid: ec4f413a35c81d74f96adca2fde23ede
+    path: Assets/Scenes/MegaBlood.unity
+    guid: b3e461ca5f63c6b4fba6789fa7c98d0f
   - enabled: 1
     path: Assets/Scenes/EndLevel.unity
     guid: 75257f3e14cf6fc4ab64d537cf7bc0aa
@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartNewGame.unity
     guid: df4911ca75cb1b64cbd8a77cc0b1b8f7
+  - enabled: 0
+    path: Assets/Scenes/Level0_4.unity
+    guid: ec4f413a35c81d74f96adca2fde23ede
   m_configObjects: {}
