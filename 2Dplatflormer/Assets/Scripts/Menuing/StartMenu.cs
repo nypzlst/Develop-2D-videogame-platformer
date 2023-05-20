@@ -19,18 +19,44 @@ public class StartMenu : MonoBehaviour
         Debug.Log("Player quit");
     }
 
+    bool isActive = false;
+
+    private void Update()
+    {
+        GameManager.SetStartMap();
+        if (GameManager.GetMapIndex() >= 6 || GameManager.GetMapIndex() == 0)
+        {
+            isActive = false;
+            button.gameObject.SetActive(false);
+        }
+        else
+        {
+            isActive = true;
+        }
+    }
+
 
     public void Continue()
     {
         GameManager.SetStartMap();
-        if (GameManager.GetMapIndex() >= 8 || GameManager.GetMapIndex() == 0)
-        {
-            button.interactable = false;
+        //if (GameManager.GetMapIndex() >= 6 || GameManager.GetMapIndex() == 0)
+        //{
+        //    button.interactable = false;
             
+            
+        //}
+        //else
+        //{
+        //        SceneManager.LoadScene("Loading");
+            
+        //}
+        if(isActive)
+        {
+            SceneManager.LoadScene("Loading");
         }
         else
         {
-                SceneManager.LoadScene("Loading");
+            button.interactable = false;
         }
     }
 
