@@ -36,6 +36,7 @@ public class Movement : MonoBehaviour
     [Header("Trampline")]
     public float launchForce = 5f;
 
+    [SerializeField] private AudioSource walkEffect;
 
     void Start()
     {
@@ -59,8 +60,9 @@ public class Movement : MonoBehaviour
     {
         moveX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+       // Debug.Log(moveX);
         anim.SetFloat("Run", Mathf.Abs(moveX));
-
+        
         
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
