@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     public static int GetMapIndex()
     {
-        Debug.Log($"GetMapIndex :{mapCount}");
+      //  Debug.Log($"GetMapIndex :{mapCount}");
         return mapCount;
     }
 
