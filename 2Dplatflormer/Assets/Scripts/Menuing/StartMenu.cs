@@ -24,7 +24,7 @@ public class StartMenu : MonoBehaviour
     private void Update()
     {
         GameManager.SetStartMap();
-        if (GameManager.GetMapIndex() >= 6 || GameManager.GetMapIndex() == 0)
+        if (GameManager.GetMapIndex() >= 7 || GameManager.GetMapIndex() == 0)
         {
             isActive = false;
             button.gameObject.SetActive(false);

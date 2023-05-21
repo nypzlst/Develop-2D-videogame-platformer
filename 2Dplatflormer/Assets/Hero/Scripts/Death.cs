@@ -12,10 +12,7 @@ public class Death : MonoBehaviour
 
     private void Awake()
     {
-        //GameManager.SetStartPosition();
-        //transform.position = GameManager.GetLaskCheckpoint();
         GameManager.SetStartMap();
-       // GameManager.GetMapIndex();
         if(GameManager.GetMapIndex() != SceneManager.GetActiveScene().buildIndex)
         {
             Transform startTransform = startPosition.transform;

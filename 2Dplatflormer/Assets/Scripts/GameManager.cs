@@ -41,10 +41,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-
-
-  
-
     public static void SetMapIndex(int count)
     {
         mapCount=count;
